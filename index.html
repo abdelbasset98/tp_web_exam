@@ -19,13 +19,23 @@
     </nav>
     <button id="btnMessage">Cliquez-ici</button>
     <p id="message"></p>
-    <div class="form">
-        <h1>Sign Up</h1>
-        <input id="nom" placeholder="Votre nom" type="text" >
-        <input id="email" placeholder="Votre Email" type="email" >
-        <input id="password" placeholder="Mot de passe" type="password">
-        <button type="submit">S'inscrire</button>
-    </div>
+    <div class="tabs">
+    <button class="tab active" onclick="showTab('signup')">Sign Up</button>
+    <button class="tab" onclick="showTab('login')">Login</button>
+</div>
+
+<div class="form" id="signup">
+    <input id="nom" placeholder="Votre nom" type="text">
+    <input id="email" placeholder="Votre Email" type="email">
+    <input id="password" placeholder="Mot de passe" type="password">
+    <button type="button" id="btnSignup">S'inscrire</button>
+</div>
+
+<div class="form" id="login" style="display:none;">
+    <input id="loginEmail" placeholder="Votre Email" type="email">
+    <input id="loginPassword" placeholder="Mot de passe" type="password">
+    <button type="button" id="btnLogin">Se connecter</button>
+</div>
     <script src="script.js"></script>
 </body>
 </html>

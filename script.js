@@ -6,22 +6,46 @@ btnMessage.addEventListener("click", function () {
     message.textContent = "Vous avez cliqué sur le bouton !";
 });
 
-const nom = document.getElementById("nom");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const button = document.querySelector(".form button");
+function showTab(tab) {
+    document.getElementById("signup").style.display = tab === "signup" ? "block" : "none";
+    document.getElementById("login").style.display = tab === "login" ? "block" : "none";
+    document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".tab")[tab === "signup" ? 0 : 1].classList.add("active");
+}
 
-button.addEventListener("click", function () {
-    if (nom.value === "" || email.value === "" || password.value === "") {
+document.getElementById("btnSignup").addEventListener("click", function () {
+    const nom = document.getElementById("nom").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (nom === "" || email === "" || password === "") {
         alert("Veuillez remplir tous les champs !");
-    } 
-    const users= JSON.parse(localStorage.getItem("users")) || [];
-     users.push({ nom: nom.value, email: email.value, password: password.value });
-    localStorage.setItem("users", JSON.stringify(users));
+    } else {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        users.push({ nom, email, password });
+        localStorage.setItem("users", JSON.stringify(users));
+        alert(`Inscription réussie ! Bienvenue ${nom}`);
+        document.getElementById("nom").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+    }
+});
 
-    alert(`Inscription réussie ! nom : ${nom.value}, email : ${email.value} password : ${password.value}`);
-    nom.value = "";
-    email.value = "";
-    password.value = "";
-      
+document.getElementById("btnLogin").addEventListener("click", function () {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    if (email === "" || password === "") {
+        alert("Veuillez remplir tous les champs !");
+        return;
+    }
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.email === email && u.password === password);
+    if (user) {
+        alert(`Bienvenue ${user.nom} !`);
+        document.getElementById("loginEmail").value = "";
+        document.getElementById("loginPassword").value = "";
+    } else {
+        alert("Email ou mot de passe incorrect !");
+    }
 });
