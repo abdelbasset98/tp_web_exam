@@ -14,7 +14,14 @@ const button = document.querySelector(".form button");
 button.addEventListener("click", function () {
     if (nom.value === "" || email.value === "" || password.value === "") {
         alert("Veuillez remplir tous les champs !");
-    } else {
-        alert("Inscription réussie !");
-    }   
+    } 
+    const users= JSON.parse(localStorage.getItem("users")) || [];
+     users.push({ nom: nom.value, email: email.value, password: password.value });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert(`Inscription réussie ! nom : ${nom.value}, email : ${email.value} password : ${password.value}`);
+    nom.value = "";
+    email.value = "";
+    password.value = "";
+      
 });
