@@ -1,5 +1,10 @@
 console.log("javascript fonctionne !");
 
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+if (currentUser) {
+    showDashboard(currentUser);
+}
+
 const btnMessage = document.getElementById("btnMessage");
 const message = document.getElementById("message");
 btnMessage.addEventListener("click", function () {
@@ -42,10 +47,22 @@ document.getElementById("btnLogin").addEventListener("click", function () {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(u => u.email === email && u.password === password);
     if (user) {
-        alert(`Bienvenue ${user.nom} !`);
-        document.getElementById("loginEmail").value = "";
-        document.getElementById("loginPassword").value = "";
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        showDashboard(user);
     } else {
         alert("Email ou mot de passe incorrect !");
     }
 });
+
+function showDashboard(user) {
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("dashboard").style.display = "flex";
+    document.getElementById("username").textContent = user.nom;
+    document.getElementById("userEmail").textContent = user.email;
+}
+
+function logout() {
+    localStorage.removeItem("currentUser");
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+}

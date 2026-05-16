@@ -3,39 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Bienvenue sur mon portfolio</h1>
-    <p>je suis étudiant en développement web.</p>
-    <a href="https://github.com" target="_blank">voir mon Github</a>
-<nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#a-propos">À propos</a>
-        <a href="#competences">Compétences</a>
-        <a href="#projets">Projets</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <button id="btnMessage">Cliquez-ici</button>
-    <p id="message"></p>
-    <div class="tabs">
-    <button class="tab active" onclick="showTab('signup')">Sign Up</button>
-    <button class="tab" onclick="showTab('login')">Login</button>
-</div>
 
-<div class="form" id="signup">
-    <input id="nom" placeholder="Votre nom" type="text">
-    <input id="email" placeholder="Votre Email" type="email">
-    <input id="password" placeholder="Mot de passe" type="password">
-    <button type="button" id="btnSignup">S'inscrire</button>
-</div>
+    <div id="mainPage">
+        <h1>Bienvenue sur mon portfolio</h1>
+        <p>je suis étudiant en développement web.</p>
 
-<div class="form" id="login" style="display:none;">
-    <input id="loginEmail" placeholder="Votre Email" type="email">
-    <input id="loginPassword" placeholder="Mot de passe" type="password">
-    <button type="button" id="btnLogin">Se connecter</button>
-</div>
+        <div style="text-align: center;">
+            <a href="https://github.com" target="_blank">voir mon Github</a>
+        </div>
+
+        <nav>
+            <a href="#accueil">Accueil</a>
+            <a href="#a-propos">À propos</a>
+            <a href="#competences">Compétences</a>
+            <a href="#projets">Projets</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button id="btnMessage">Cliquez-ici</button>
+        <p id="message"></p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('signup')">Sign Up</button>
+            <button class="tab" onclick="showTab('login')">Login</button>
+        </div>
+
+        <div class="form" id="signup">
+            <input id="nom" placeholder="Votre nom" type="text">
+            <input id="email" placeholder="Votre Email" type="email">
+            <input id="password" placeholder="Mot de passe" type="password">
+            <button type="button" id="btnSignup">S'inscrire</button>
+        </div>
+
+        <div class="form" id="login" style="display:none;">
+            <input id="loginEmail" placeholder="Votre Email" type="email">
+            <input id="loginPassword" placeholder="Mot de passe" type="password">
+            <button type="button" id="btnLogin">Se connecter</button>
+        </div>
+    </div>
+    
+    <div id="dashboard" style="display:none;">
+        <div class="card">
+            <h1>Bienvenue <span id="username"></span> !</h1>
+            <p id="userEmail"></p>
+            <button onclick="logout()">Se déconnecter</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
