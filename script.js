@@ -5,3 +5,16 @@ const message = document.getElementById("message");
 btnMessage.addEventListener("click", function () {
     message.textContent = "Vous avez cliqué sur le bouton !";
 });
+
+const nom = document.getElementById("nom");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const button = document.querySelector(".form button");
+
+button.addEventListener("click", function () {
+    if (nom.value === "" || email.value === "" || password.value === "") {
+        alert("Veuillez remplir tous les champs !");
+    } else {
+        alert("Inscription réussie !");
+    }   
+});
